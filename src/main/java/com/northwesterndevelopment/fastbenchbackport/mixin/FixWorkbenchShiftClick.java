@@ -23,6 +23,7 @@ public class FixWorkbenchShiftClick implements IFixShiftClick {
     @Shadow
     private World worldObj;
 
+    @Unique
     private ItemStack lastResult;
 
     /**
@@ -33,9 +34,10 @@ public class FixWorkbenchShiftClick implements IFixShiftClick {
     public void onCraftMatrixChanged(IInventory inv)
     {
         this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
-        this.lastResult = this.craftResult.getStackInSlot(0);
+        this.lastResult = this.craftResult.getStackInSlot(0) != null ? this.craftResult.getStackInSlot(0).copy() : null;
     }
 
+    @Unique
     public ItemStack getLastResult() {
         return lastResult;
     }
