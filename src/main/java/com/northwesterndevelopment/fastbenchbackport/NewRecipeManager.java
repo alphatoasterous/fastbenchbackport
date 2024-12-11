@@ -62,8 +62,8 @@ public class NewRecipeManager extends CraftingManager {
             if(cache.containsKey(inventoryCrafting.getClass())) {
                 List<IRecipe> cacheList = cache.get(inventoryCrafting.getClass());
                 for (int l = 0; l < cacheList.size(); l++) {
-                    if (cacheList.get(l).matches(inventoryCrafting, world)) {
-                        IRecipe recipe = cacheList.get(l);
+                    IRecipe recipe = cacheList.get(l);
+                    if (recipe.matches(inventoryCrafting, world)) {
                         if (l != 0) {
                             cacheList.remove(l);
                             cacheList.add(0, recipe);
