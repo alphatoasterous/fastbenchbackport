@@ -59,17 +59,19 @@ public class NewRecipeManager extends CraftingManager {
         }
         else
         {
-            if(cache.containsKey(inventoryCrafting.getClass()))
-                for (int l = 0; l < cache.get(inventoryCrafting.getClass()).size(); l++) {
-                    if (cache.get(inventoryCrafting.getClass()).get(l).matches(inventoryCrafting, world))
-                    {
-                        IRecipe recipe = cache.get(inventoryCrafting.getClass()).get(l);
-                        cache.get(inventoryCrafting.getClass()).remove(l);
-                        cache.get(inventoryCrafting.getClass()).add(0, recipe);
-                        System.out.println("CACHE HIT");
+            if(cache.containsKey(inventoryCrafting.getClass())) {
+                List<IRecipe> cacheList = cache.get(inventoryCrafting.getClass());
+                for (int l = 0; l < cacheList.size(); l++) {
+                    if (cacheList.get(l).matches(inventoryCrafting, world)) {
+                        IRecipe recipe = cacheList.get(l);
+                        if (l != 0) {
+                            cacheList.remove(l);
+                            cacheList.add(0, recipe);
+                        }
                         return recipe.getCraftingResult(inventoryCrafting);
                     }
                 }
+            }
 
             for (j = 0; j < super.recipes.size(); ++j)
             {
@@ -78,11 +80,10 @@ public class NewRecipeManager extends CraftingManager {
                 if (irecipe.matches(inventoryCrafting, world))
                 {
                     if(!cache.containsKey(inventoryCrafting.getClass())) cache.put(inventoryCrafting.getClass(), new ArrayList<IRecipe>());
-                    System.out.println("CACHE MISS, ADDING");
-                    cache.get(inventoryCrafting.getClass()).add(0, irecipe);
-                    if (cache.get(inventoryCrafting.getClass()).size() > 256) {
-                        System.out.println("CACHE OVER 256, REMOVING LAST ENTRY");
-                        cache.get(inventoryCrafting.getClass()).remove(cache.get(inventoryCrafting.getClass()).size() - 1);
+                    List<IRecipe> cacheList = cache.get(inventoryCrafting.getClass());
+                    cacheList.add(0, irecipe);
+                    if (cacheList.size() > 256) {
+                        cacheList.remove(cache.get(inventoryCrafting.getClass()).size() - 1);
                     }
                     return irecipe.getCraftingResult(inventoryCrafting);
                 }
