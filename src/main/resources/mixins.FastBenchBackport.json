@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "com.northwesterndevelopment.fastbenchbackport.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "fastbenchbackport.refmap.json",
+  "mixins": [
+    "ReplaceCraftingManager"
+  ],
+  "client": [],
+  "minVersion": "0.6"
+}

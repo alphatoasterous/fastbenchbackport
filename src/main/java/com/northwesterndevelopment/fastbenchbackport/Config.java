@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.northwesterndevelopment.fastbenchbackport;
 
 import java.io.File;
 

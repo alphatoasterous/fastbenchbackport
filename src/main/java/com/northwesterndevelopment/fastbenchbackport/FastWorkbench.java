@@ -1,5 +1,6 @@
-package com.myname.mymodid;
+package com.northwesterndevelopment.fastbenchbackport;
 
+import com.northwesterndevelopment.fastbenchbackport.Tags;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -10,14 +11,14 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 
-@Mod(modid = MyMod.MODID, version = Tags.VERSION, name = "MyMod", acceptedMinecraftVersions = "[1.7.10]")
-public class MyMod {
+@Mod(modid = FastWorkbench.MODID, version = Tags.VERSION, name = "FastWorkbenchBackport", acceptedMinecraftVersions = "[1.7.10]")
+public class FastWorkbench {
 
-    public static final String MODID = "mymodid";
+    public static final String MODID = "fastbenchbackport";
     public static final Logger LOG = LogManager.getLogger(MODID);
 
-    @SidedProxy(clientSide = "com.myname.mymodid.ClientProxy", serverSide = "com.myname.mymodid.CommonProxy")
-    public static CommonProxy proxy;
+    @SidedProxy(clientSide = "com.northwesterndevelopment.fastbenchbackport.ClientProxy", serverSide = "com.northwesterndevelopment.fastbenchbackport.CommonProxy")
+    public static com.northwesterndevelopment.fastbenchbackport.CommonProxy proxy;
 
     @Mod.EventHandler
     // preInit "Run before anything else. Read your config, create blocks, items, etc, and register them with the

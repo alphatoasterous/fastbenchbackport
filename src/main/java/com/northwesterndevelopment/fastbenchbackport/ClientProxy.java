@@ -1,4 +1,5 @@
-package com.myname.mymodid;
+package com.northwesterndevelopment.fastbenchbackport;
+
 
 public class ClientProxy extends CommonProxy {
 
