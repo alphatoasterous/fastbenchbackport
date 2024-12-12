@@ -5,6 +5,7 @@
   "refmap": "fastbenchbackport.refmap.json",
   "mixins": [
     "FixWorkbenchShiftClick",
+    "MoreShiftClickFixes",
     "ReplaceCraftingManager"
   ],
   "client": [],

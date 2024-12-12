@@ -33,7 +33,8 @@ public class NewWorkbenchInventoryCrafting extends InventoryCrafting {
                     this.eventHandler.onCraftMatrixChanged(this);
                 }
 
-                ((ContainerWorkbench) this.eventHandler).craftResult.setInventorySlotContents(0, ((IFixShiftClick)this.eventHandler).getLastResult());
+                ItemStack lastResult = ((IFixShiftClick)this.eventHandler).getLastResult();
+                ((ContainerWorkbench) this.eventHandler).craftResult.setInventorySlotContents(0, lastResult == null ? null : lastResult.copy());
 
                 return itemstack;
             }
